@@ -1,0 +1,70 @@
+:root {
+    --background: #14161a;
+    --card: #1d1f26;
+    --color: #ebecf0;
+    --button: #406abf;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    background-color: var(--background);
+    color: var(--color);
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.rows {
+    display: grid;
+    row-gap: 10px;
+    margin: 10px auto;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.input {
+    background: var(--card);
+    width: 80px;
+    height: 80px;
+    border: 0px;
+    border-radius: 15px;
+    text-align: center;
+    color: var(--color);
+    font-weight: 600;
+    font-size: 32px;
+    margin-right: 5px;
+    text-transform: uppercase;
+}
+
+.input:last-of-type {
+    margin-right: 0px;
+}
+
+.true {
+    background-color: #18af18;
+    transition: all 0.25s ease-in-out;
+    transform: scale(1);
+}
+
+.practically {
+    background-color: #ebad39;
+}
+
+.btn {
+    background-color: var(--button);
+    border: 0px;
+    color: var(--color);
+    padding: 10px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 24px;
+}
