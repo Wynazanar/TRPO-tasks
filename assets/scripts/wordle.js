@@ -122,7 +122,11 @@ function addNewRow() {
             index++;
             try {
                 nextIndex.focus();
-            } catch {}
+            } catch {
+                CheckWord();
+                nextIndex = document.querySelectorAll(".input")[index];
+                nextIndex.focus();
+            }
         });
 
         div.appendChild(input);
