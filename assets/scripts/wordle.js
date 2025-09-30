@@ -139,7 +139,6 @@ function addNewRow() {
 function CheckWord() {
     let rows = document.querySelectorAll(".input");
     let won = 0; 
-
     console.log(rows);
 
     if (rows[rows.length - 1].value == word[4]) {
