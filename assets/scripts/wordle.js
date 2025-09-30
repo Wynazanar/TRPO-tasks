@@ -97,25 +97,18 @@ function StartGame() {
     word = GenerateWord();
     console.log(word);
 
-    for(let i = 0; i < 5; i++) {
-        let input = document.createElement('input');
-        input.type = 'text';
-        input.className = 'input';
-        input.minLength = 1;
-        input.maxLength = 1;
-        
-        div.appendChild(input);
-    }
-    
     let listRows = document.querySelector('#list-rows');
     listRows.innerHTML = "";
-    listRows.appendChild(div);
+    addNewRow();
 }
+
+let index = 0;
 
 function addNewRow() {
     let div = document.createElement('div');
     div.className = 'row';
     
+
     for(let i = 0; i < 5; i++) {
         let input = document.createElement('input');
         input.type = 'text';
@@ -124,6 +117,14 @@ function addNewRow() {
         input.minLength = 1;
         input.maxLength = 1;
         
+        input.addEventListener("input", function() {
+            let nextIndex = document.querySelectorAll(".input")[index + 1];
+            index++;
+            try {
+                nextIndex.focus();
+            } catch {}
+        });
+
         div.appendChild(input);
     }
     
@@ -148,6 +149,8 @@ function CheckWord() {
             }
         }
     }
+    rows[rows.length - 1].readOnly = true;
+
     if (rows[rows.length - 2].value == word[3]) {
         rows[rows.length - 2].classList.add("true");
         won++;
@@ -158,6 +161,8 @@ function CheckWord() {
             }
         }
     }
+    rows[rows.length - 2].readOnly = true;
+
     if (rows[rows.length - 3].value == word[2]) {
         rows[rows.length - 3].classList.add("true");
         won++;
@@ -168,6 +173,8 @@ function CheckWord() {
             }
         }
     }
+    rows[rows.length - 3].readOnly = true;
+
     if (rows[rows.length - 4].value == word[1]) {
         rows[rows.length - 4].classList.add("true");
         won++;
@@ -178,6 +185,8 @@ function CheckWord() {
             }
         }
     }
+    rows[rows.length - 4].readOnly = true;
+
     if (rows[rows.length - 5].value == word[0]) {
         rows[rows.length - 5].classList.add("true");
         won++;
@@ -188,7 +197,7 @@ function CheckWord() {
             }
         }
     }
-
+    rows[rows.length - 5].readOnly = true;
 
     // for (let j = 0; j < rows.length; j++) {
     //     console.log(rows[j]);

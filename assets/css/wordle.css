@@ -51,12 +51,14 @@ body {
 
 .true {
     background-color: #18af18;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.35s ease-in-out;
     transform: scale(1);
 }
 
 .practically {
     background-color: #ebad39;
+    transition: all 0.35s ease-in-out;
+    transform: scale(1);
 }
 
 .btn {
