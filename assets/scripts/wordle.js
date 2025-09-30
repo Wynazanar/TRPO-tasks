@@ -75,8 +75,7 @@ let words = [
     'слеза', 'купец', 'конец'
 ];
 
-let word = GenerateWord();
-console.log(word);
+let word = "";
 
 StartGame();
 
@@ -87,7 +86,7 @@ document.querySelector(".btn").addEventListener("click", function() {
 
 function GenerateWord() {
     let index = Math.floor(Math.random() * words.length);
-
+    
     return words[index].toLocaleLowerCase();
 }
 
@@ -95,6 +94,9 @@ function StartGame() {
     let div = document.createElement('div');
     div.className = 'row';
     
+    word = GenerateWord();
+    console.log(word);
+
     for(let i = 0; i < 5; i++) {
         let input = document.createElement('input');
         input.type = 'text';
@@ -106,6 +108,7 @@ function StartGame() {
     }
     
     let listRows = document.querySelector('#list-rows');
+    listRows.innerHTML = "";
     listRows.appendChild(div);
 }
 
@@ -131,16 +134,69 @@ function addNewRow() {
 function CheckWord() {
     let rows = document.querySelectorAll(".input");
     let pos = [];
-    
+    let won = 0; 
+
     console.log(rows);
 
-    for (let j = 0; j < rows.length; j++) {
-        console.log(rows[j]);
-        if (rows[j].value.toLowerCase() === word[j]) {
-            rows[j].classList.add("true");
-            pos.push(j);
+    if (rows[rows.length - 1].value == word[4]) {
+        rows[rows.length - 1].classList.add("true");
+        won++;
+    } else {
+        for (let i = 0; i < 5; i++) {
+            if (rows[rows.length - 1].value == word[i]) {
+                rows[rows.length - 1].classList.add("practically");
+            }
         }
     }
+    if (rows[rows.length - 2].value == word[3]) {
+        rows[rows.length - 2].classList.add("true");
+        won++;
+    } else {
+        for (let i = 0; i < 5; i++) {
+            if (rows[rows.length - 2].value == word[i]) {
+                rows[rows.length - 2].classList.add("practically");
+            }
+        }
+    }
+    if (rows[rows.length - 3].value == word[2]) {
+        rows[rows.length - 3].classList.add("true");
+        won++;
+    } else {
+        for (let i = 0; i < 5; i++) {
+            if (rows[rows.length - 3].value == word[i]) {
+                rows[rows.length - 3].classList.add("practically");
+            }
+        }
+    }
+    if (rows[rows.length - 4].value == word[1]) {
+        rows[rows.length - 4].classList.add("true");
+        won++;
+    } else {
+        for (let i = 0; i < 5; i++) {
+            if (rows[rows.length - 4].value == word[i]) {
+                rows[rows.length - 4].classList.add("practically");
+            }
+        }
+    }
+    if (rows[rows.length - 5].value == word[0]) {
+        rows[rows.length - 5].classList.add("true");
+        won++;
+    } else {
+        for (let i = 0; i < 5; i++) {
+            if (rows[rows.length - 5].value == word[i]) {
+                rows[rows.length - 5].classList.add("practically");
+            }
+        }
+    }
+
+
+    // for (let j = 0; j < rows.length; j++) {
+    //     console.log(rows[j]);
+    //     if (rows[j].value.toLowerCase() === word[j]) {
+    //         rows[j].classList.add("true");
+    //         pos.push(j);
+    //     }
+    // }
 
     // console.log(pos);
 
@@ -152,6 +208,9 @@ function CheckWord() {
     //         }
     //     }
     // }
-
-    addNewRow();
+    if (won != 5) {
+        addNewRow();
+    } else {
+        StartGame();
+    }
 }
