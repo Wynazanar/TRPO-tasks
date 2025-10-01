@@ -1,12 +1,23 @@
 "use strict";
 
+let cloth = ["t-short", "shoe", "shorts"];
+
 function dragstart_handler(ev) {
     ev.dataTransfer.setData("text/plain", ev.target.id);
-      ev.dataTransfer.dropEffect = "copy";
-
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+
+    let randomCloth = Math.floor(Math.random() * (15 - 4 + 1) + 4);
+    console.log(randomCloth);
+
+    let basket = document.querySelector("#basket");
+    basket.innerHTML = "";
+
+    for (let i = 0; i <= randomCloth; i++) {
+        basket.innerHTML += `<img id="item" draggable="true" src="assets/image/${cloth[Math.floor(Math.random() * cloth.length)]}.png">`;
+    }
+
     const elements = document.querySelectorAll("#item");
     for (let i = 0; i < elements.length; i++) {
         elements[i].addEventListener("dragstart", dragstart_handler);
