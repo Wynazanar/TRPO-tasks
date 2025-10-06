@@ -1,9 +1,21 @@
 body {
     background-color: #65adc3;
+    font-family: "Noto Sans", serif;
+}
+
+h2 {
+    font-size: 28px;
 }
 
 .container {
     max-width: 1280px;
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+    color: white;
+}
+
+.machine {
     width: 100%;
     margin: 50px auto;
     display: flex;

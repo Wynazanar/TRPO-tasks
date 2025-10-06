@@ -1,6 +1,12 @@
 "use strict";
 
-let cloth = ["t-short", "shoe", "shorts"];
+let cloth = ["backpack", "bag", "dress_blue", "dress_red",
+    "hat_blue", "hat_orange", "jacket", "shirt_blue", "shirt_orange",
+    "shorts_green", "shorts", "skirt", "undershirt_pink"
+];
+let randomCloth = 0;
+let spawnCloth = 0;
+let basket = document.querySelector("#basket");
 
 function dragstart_handler(ev) {
     ev.dataTransfer.setData("text/plain", ev.target.id);
@@ -8,20 +14,13 @@ function dragstart_handler(ev) {
 
 window.addEventListener("DOMContentLoaded", () => {
 
-    let randomCloth = Math.floor(Math.random() * (15 - 4 + 1) + 4);
+    randomCloth = Math.floor(Math.random() * (15 - 4 + 1) + 4);
     console.log(randomCloth);
+    console.log(spawnCloth);
 
-    let basket = document.querySelector("#basket");
     basket.innerHTML = "";
 
-    for (let i = 0; i <= randomCloth; i++) {
-        basket.innerHTML += `<img id="item" draggable="true" src="assets/image/${cloth[Math.floor(Math.random() * cloth.length)]}.png">`;
-    }
-
-    const elements = document.querySelectorAll("#item");
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].addEventListener("dragstart", dragstart_handler);
-    }
+    NextCloth();
 });
 
 function dragover_handler(event) {
@@ -34,5 +33,24 @@ function drop_handler(event) {
     event.preventDefault();
     let data = event.dataTransfer.getData("text/plain");
     document.getElementById(data).remove();
+    NextCloth();
     document.querySelector("#washingMachine").src = "assets/image/washingMachine_close.png";
+}
+
+function NextCloth() {
+    
+    if (spawnCloth < randomCloth) {
+        basket.innerHTML += `<img id="item" draggable="true" src="assets/image/cloth/${cloth[Math.floor(Math.random() * cloth.length)]}.png">`;
+        document.querySelector("#counter").textContent = `Загружено: ${spawnCloth}/${randomCloth}`;
+        spawnCloth++;
+        console.log(spawnCloth);
+    } else {
+        document.querySelector("#counter").textContent = `Загружено: ${spawnCloth+1}/${randomCloth}`;
+    }
+    
+    
+    const elements = document.querySelectorAll("#item");
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("dragstart", dragstart_handler);
+    }
 }

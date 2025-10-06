@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,36 @@
     <link rel="stylesheet" href="assets/css/washing.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
 
+    <link rel="shortcut icon" href="assets/image/shorts.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <div class="container">
-        <img id="washingMachine" ondrop="drop_handler(event)" ondragover="dragover_handler(event)" src="assets/image/washingMachine_close.png">
-        <div id="basket">
+        <h2>Стиральная машина</h2>
+        <p>Загрузите вещи</p>
+        
+        <div class="machine">
+            <img id="washingMachine" ondrop="drop_handler(event)" ondragover="dragover_handler(event)"
+                src="assets/image/washingMachine_close.png">
+            <div id="basket"></div>
         </div>
+
+        <p id="counter">Вещей осталось: </p>
+
+        <div>
+            <button>Начать стирку</button>
+            <button>Начать стирку</button>
+            <button>Начать стирку</button>
+        </div>
+
+    </div>
     <script src="assets/scripts/washing.js"></script>
 </body>
+
 </html>
